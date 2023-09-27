@@ -126,7 +126,7 @@ final class TextMessageView: UIView, ContainerCollectionViewCellDelegate {
     private func setupSize() {
         UIView.performWithoutAnimation {
             self.textViewWidthConstraint?.constant = viewPortWidth * Constants.maxWidth
-            textView.invalidateIntrinsicContentSize()
+//            textView.invalidateIntrinsicContentSize()
 //            textView.setNeedsUpdateConstraints()
 //            setNeedsLayout()
         }
@@ -153,4 +153,33 @@ private final class MessageTextView: UITextView {
         false
     }
 
+    override func setNeedsLayout() {
+        print("\(Self.self) \(#function)")
+        super.setNeedsLayout()
+    }
+
+    override func layoutIfNeeded() {
+        print("\(Self.self) \(#function)")
+        super.layoutIfNeeded()
+    }
+
+    override func layoutSubviews() {
+        print("\(Self.self) \(#function)")
+        super.layoutSubviews()
+    }
+
+    override func updateConstraintsIfNeeded() {
+        print("\(Self.self) \(#function)")
+        super.updateConstraintsIfNeeded()
+    }
+
+    override func setNeedsUpdateConstraints() {
+        print("\(Self.self) \(#function)")
+        super.setNeedsUpdateConstraints()
+    }
+
+    override func updateConstraints() {
+        print("\(Self.self) \(#function)")
+        super.updateConstraints()
+    }
 }
