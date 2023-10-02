@@ -30,7 +30,7 @@ struct VoidPayload: Equatable, TapSelectionStateSupporting, InteractivelyMovingI
 
 final class ChatViewController: UIViewController {
 
-    lazy var scrollView = RecyclerScrollView(frame: UIScreen.main.bounds, engine: SimpleLayoutEngine<Cell, VoidPayload>(identifiers: []))
+    lazy var scrollView = RecyclerScrollView(frame: UIScreen.main.bounds, engine: SimpleLayoutEngine<Cell.Identifier, VoidPayload>(identifiers: []))
 
     private enum ReactionTypes {
         case delayedUpdate

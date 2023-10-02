@@ -61,7 +61,7 @@ final class DefaultRandomDataProvider: RandomDataProvider {
 
     private let enableTyping = false
 
-    private let enableNewMessages = false
+    private let enableNewMessages = true
 
     private let enableRichContent = false
 
