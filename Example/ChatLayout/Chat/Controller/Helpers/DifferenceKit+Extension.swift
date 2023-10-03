@@ -40,6 +40,8 @@ extension RecyclerScrollView where Engine.Identifier == Cell.Identifier {
             return
         }
 
+        let modificationContext = prepareForModifications()
+
         let dispatchGroup: DispatchGroup? = completion != nil ? DispatchGroup() : nil
         let completionHandler: ((Bool) -> Void)? = completion != nil ? { _ in
             dispatchGroup!.leave()
@@ -85,9 +87,8 @@ extension RecyclerScrollView where Engine.Identifier == Cell.Identifier {
                     return
                 }
 
-                self.applyModifications(modifications)
+                modificationContext.apply(modifications)
             }, completion: { b in
-                self.commitModifications()
                 completionHandler?(b)
             })
             originalData = changeset.data
@@ -95,6 +96,7 @@ extension RecyclerScrollView where Engine.Identifier == Cell.Identifier {
 
         dispatchGroup?.notify(queue: .main) {
             print("END")
+            modificationContext.commit()
             completion!(true)
         }
     }
